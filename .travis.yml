@@ -1,5 +1,14 @@
 language: node_js
 node_js:
-  - "8.10"
+- '8.10'
 script:
-  - yarn run test && yarn run coverage:publish
+- yarn run test
+- yarn run coverage:publish
+deploy:
+  provider: npm
+  email: jesus.urrutia@gmail.com
+  api_key:
+    secure: QWpwVI7y0AEFZZEhT99tbrdayqeo6kX7RZmV/YLzPafvdbC9h/qUMlSATCpkQ4QHhFhFyCYAqYB+f8uqSzo+xVez5EM/59V1uDjJS1kNNWgywWHcpqZQUV4iDoKRfJBhYdw6By5UHgrn0jRCjvVGAL5WWJeA1xSkZt2IM+8+MZkcKgNXXlNb8qSnZdvFSpoK1yx4wHD2IdYriVafU31VW52/RU/AvC3w3fy4L7sXfw7u/cV18p8qjB9khniIefYFWZ2IZML5izQ2aqvXrVt84MyWDUSHx53ILCCZM0tqbgZU/5kBh2XgKx5kdcdeslfCYFYhoL5dQ5e2P7mRcXpaaGfoPPrA3w0aaS/5NrRw+6wxYSdxxtu+7F7ro9/OZJS1Sit76dRiVYuGtGiozgN2GTNCXwc8ciRpFP0oawI8ilMxZC7taqTDOfAJTCyD6U+MEZBpHN3DaB7rRWGC1fu3JZ43at3JGi23cEbGl+g7um0FkUYtTVfrbFoYLZ2SMddKf6VJ3a9oSKoF+r8R6sOvv6cWAZO8xhc9P1DUbOu0oWkHp43x9ATyJnrdfBsPUKphEMchtzuL5HjL7h1g0/B4A/OGUpsLMIR7rpLa3sAA08WMsGEnly9erI6+AUeChZxT6QcHOmePCsiilvmDvInUtz4NlVocedUumZisx/iLV6E=
+  tag: next
+  on:
+    tags: true
