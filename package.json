@@ -1,0 +1,19 @@
+{
+  "name": "arrispwod",
+  "version": "1.0.0",
+  "description": "Arris password of day generator",
+  "main": "src/index.js",
+  "repository": "https://github.com/jesusgoku/arrispwod",
+  "author": "Jesús Urrutia <jesus.urrutia@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.10"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1"
+  },
+  "scripts": {
+    "test": "node \"$(npm bin)/mocha\" ./test"
+  }
+}
