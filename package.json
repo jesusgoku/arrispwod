@@ -12,10 +12,13 @@
     "node": ">=8.10"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "chai": "^4.1.2",
     "codecov": "^3.0.0",
+    "husky": "^4.2.5",
     "istanbul": "^0.4.5",
     "mocha": "^5.1.1",
     "rimraf": "^3.0.2",
