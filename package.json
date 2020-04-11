@@ -2,7 +2,9 @@
   "name": "arrispwod",
   "version": "1.0.2",
   "description": "Arris password of day generator",
-  "main": "src/index.js",
+  "main": "dist/arrispwod.cjs.js",
+  "module": "dist/arrispwod.esm.js",
+  "browser": "dist/arrispwod.umd.js",
   "repository": "https://github.com/jesusgoku/arrispwod",
   "author": "Jesús Urrutia <jesus.urrutia@gmail.com>",
   "license": "MIT",
@@ -10,13 +12,23 @@
     "node": ">=8.10"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
     "chai": "^4.1.2",
     "codecov": "^3.0.0",
     "istanbul": "^0.4.5",
-    "mocha": "^5.1.1"
+    "mocha": "^5.1.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.6.0",
+    "rollup-plugin-terser": "^5.3.0"
   },
   "scripts": {
+    "build": "rimraf dist && rollup -c",
     "test": "node \"$(npm bin)/istanbul\" cover \"$(npm bin)/_mocha\" --reporter lcovonly ./test -- -R spec",
-    "coverage:publish": "node \"$(npm bin)/codecov\""
-  }
+    "coverage:publish": "node \"$(npm bin)/codecov\"",
+    "prepublish": "yarn build"
+  },
+  "files": [
+    "dist"
+  ]
 }
