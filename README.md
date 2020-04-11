@@ -5,11 +5,35 @@
 
 Javascript library for generate password of the day for Arris routers.
 
-## Usage
+## Install
 
-```sh
+```bash
+npm install arrispwod
+
+# Or with yarn
 yarn add arrispwod
 ```
+
+## Usage
+
+### NodeJS
+
+```javascript
+// CommonJS
+const genPassOfDay = require('arrispwod');
+
+// Or with ESNext
+import genPassOfDay from 'arrispwod';
+
+
+const passOfDay = getPassOfDay(new Date());
+console.log(passOfDay);
+```
+
+### Browser
+
+Use UMD package from: [https://unpkg.com/arrispwod](https://unpkg.com/arrispwod)
+
 
 ## Related
 
