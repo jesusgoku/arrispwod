@@ -28,27 +28,29 @@ const ALPHANUM = [
 /**
  * Generate Pass of the day for Arris Router
  *
- * @param {Date} d - Date for calculate password
- * @param {String} s - Seed for generate password. Min length: 1
+ * @param {Date} [day] - Date for calculate password.
+ * @param {string} [seed] - Seed for generate password. Min length: 1
+ *
+ * @returns {string} - password of the day
  **/
-function genPassOfDay(d, s = DEFAULT_SEED) {
-  if (!(d instanceof Date)) {
+function genPassOfDay(day = new Date(), seed = DEFAULT_SEED) {
+  if (!(day instanceof Date)) {
     throw new TypeError('Date is not a Date instance');
   }
 
-  if (typeof s !== 'string') {
+  if (typeof seed !== 'string') {
     throw new TypeError('Seed is not a String instance');
   }
 
-  if (s.length < 1) {
+  if (seed.length < 1) {
     throw new Error('Seed min length: 1');
   }
 
-  const seed = s.repeat(10);
-  const year = d.getFullYear() % 100; // Two last digits
-  const month = d.getMonth() + 1; // January === 1
-  const dayOfMonth = d.getDate();
-  const dayOfWeek = d.getDay() === 0 ? 6 : d.getDay() - 1; // Monday === 1
+  const seedRepeated = seed.repeat(10);
+  const year = day.getFullYear() % 100; // Two last digits
+  const month = day.getMonth() + 1; // January === 1
+  const dayOfMonth = day.getDate();
+  const dayOfWeek = day.getDay() === 0 ? 6 : day.getDay() - 1; // Monday === 1
 
   const l1 = TABLE1[dayOfWeek].slice(0);
   l1.push(dayOfMonth);
@@ -57,7 +59,7 @@ function genPassOfDay(d, s = DEFAULT_SEED) {
     : (year + month - dayOfMonth) % 36);
   l1.push((3 + (year + month) % 12) * dayOfMonth % 37 % 36);
 
-  const l2 = [...Array(8).keys()].map((_, i) => seed.charCodeAt(i) % 36);
+  const l2 = [...Array(8).keys()].map((_, i) => seedRepeated.charCodeAt(i) % 36);
 
   const l3 = l1.map((f, i) => (f + l2[i]) % 36);
   const l38 = l3.reduce((t, i) => t + i, 0) % 36;
@@ -67,7 +69,7 @@ function genPassOfDay(d, s = DEFAULT_SEED) {
 
   const l4 = TABLE2[num8].map(i => l3[i]);
 
-  const l5 = l4.map((v, i) => (seed.charCodeAt(i) + v) % 36);
+  const l5 = l4.map((v, i) => (seedRepeated.charCodeAt(i) + v) % 36);
 
   return l5.map(i => ALPHANUM[i]).join('');
 }
