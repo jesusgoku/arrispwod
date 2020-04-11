@@ -34,6 +34,9 @@ console.log(passOfDay);
 
 Use UMD package from: [https://unpkg.com/arrispwod](https://unpkg.com/arrispwod)
 
+## API
+
+See API [here](docs/api.md)
 
 ## Related
 

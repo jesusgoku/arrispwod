@@ -18,6 +18,7 @@
     "@rollup/plugin-node-resolve": "^7.1.1",
     "chai": "^4.1.2",
     "codecov": "^3.0.0",
+    "documentation": "^12.3.0",
     "husky": "^4.2.5",
     "istanbul": "^0.4.5",
     "mocha": "^5.1.1",
@@ -27,10 +28,12 @@
     "standard-version": "^7.1.0"
   },
   "scripts": {
-    "build": "rimraf dist && rollup -c",
+    "build": "yarn run --silent build:js && yarn run --silent build:docs",
+    "build:js": "rimraf dist && rollup -c",
+    "build:docs": "documentation readme --quiet --section API --readme-file docs/api.md src/index.js",
     "test": "node \"$(npm bin)/istanbul\" cover \"$(npm bin)/_mocha\" --reporter lcovonly ./test -- -R spec",
     "coverage:publish": "node \"$(npm bin)/codecov\"",
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "yarn run --silent build",
     "release": "standard-version"
   },
   "files": [
