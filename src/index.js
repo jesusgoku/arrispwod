@@ -1,5 +1,3 @@
-module.exports = genPassOfDay;
-
 const DEFAULT_SEED = 'MPSJKMDHAI';
 
 const TABLE1 = [
@@ -74,5 +72,4 @@ function genPassOfDay(d, s = DEFAULT_SEED) {
   return l5.map(i => ALPHANUM[i]).join('');
 }
 
-// const p = genPassOfDay(new Date('2018-04-02 00:00:00'), 'vtr2014');
-// console.log(p);
+module.exports = genPassOfDay;
