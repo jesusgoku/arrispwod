@@ -30,7 +30,7 @@
     "build": "rimraf dist && rollup -c",
     "test": "node \"$(npm bin)/istanbul\" cover \"$(npm bin)/_mocha\" --reporter lcovonly ./test -- -R spec",
     "coverage:publish": "node \"$(npm bin)/codecov\"",
-    "prepublish": "yarn build",
+    "prepublishOnly": "yarn build",
     "release": "standard-version"
   },
   "files": [
